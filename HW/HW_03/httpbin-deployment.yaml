@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-backend
+  namespace: artalll-namespace
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api-backend
+  template:
+    metadata:
+      labels:
+        app: api-backend
+    spec:
+      containers:
+      - name: httpbin
+        image: kennethreitz/httpbin
+        ports:
+        - containerPort: 80

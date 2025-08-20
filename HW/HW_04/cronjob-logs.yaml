@@ -1,0 +1,34 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: log-date-job
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          volumes:
+            - name: logs-volume
+              persistentVolumeClaim:
+                claimName: logs-pvc
+          containers:
+            - name: main
+              image: busybox
+              command:
+                - /bin/sh
+                - -c
+                - "date >> /logs/dates.log; sleep 10"
+              volumeMounts:
+                - name: logs-volume
+                  mountPath: /logs
+            - name: sidecar
+              image: busybox
+              command:
+                - /bin/sh
+                - -c
+                - "tail -n+1 -F /logs/dates.log"
+              volumeMounts:
+                - name: logs-volume
+                  mountPath: /logs
+          restartPolicy: OnFailure

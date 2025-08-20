@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: custom-app
+  namespace: artalll-namespace
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: custom-app
+  template:
+    metadata:
+      labels:
+        app: custom-app
+    spec:
+      containers:
+      - name: custom-app
+        image: artalll/hw03-custom-app:latest
+        ports:
+        - containerPort: 5000

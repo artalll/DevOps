@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: random-flask
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: random-flask
+  template:
+    metadata:
+      labels:
+        app: random-flask
+    spec:
+      containers:
+        - name: flask-app
+          image: artalll/random-flask:latest
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              cpu: "100m"
+            limits:
+              cpu: "200m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: random-flask
+spec:
+  selector:
+    app: random-flask
+  ports:
+    - port: 5000
+      targetPort: 5000
