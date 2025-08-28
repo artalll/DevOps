@@ -6,4 +6,5 @@ print("Author: Artalll")
 
 print("Welcome to Git Assignment")
 print("Current time: MisterX")
+print("Current time: MisterY")
 

@@ -2,5 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/../.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/assignment_project/appium" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/assignment_project/my_python_tool" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/assignment_project/selenium" vcs="Git" />
   </component>
 </project>
